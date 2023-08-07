@@ -1,7 +1,4 @@
-import pandas as pd
-import numpy as np
-
-
+from . import np, pd
 from .ba1g import HammingDistance
 
 
@@ -32,13 +29,12 @@ def generate(s, l, it):
 
 
 def MedianString(Dna: list, k: int) -> str:
-
     def DMinSeq(pattern, seq):
         # look at all kmers for seq
         # return the minimized d
         d_min = None
         for i in range(len(seq) - len(pattern) + 1):
-            kmer = seq[i:i+len(pattern)]
+            kmer = seq[i:i + len(pattern)]
             d = HammingDistance(pattern, kmer)
             if d_min is None or d_min > d:
                 d_min = d
