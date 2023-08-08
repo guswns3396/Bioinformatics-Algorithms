@@ -19,10 +19,10 @@ def ProfileMostProbableKmer(txt: str, k: int,
 
     # get max p iterating through kmers
     p_max = 0
-    kmer_max = ''
+    kmer_max = None
     for kmer in kmers:
         p = KmerP(kmer, prof)
-        if p > p_max:
+        if kmer_max is None or p > p_max:
             p_max = p
             kmer_max = kmer
 
