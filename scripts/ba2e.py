@@ -1,6 +1,7 @@
 from .ba2d import Score, ProfileMostProbableKmer
 
 
+# profile w pseudocounts
 def Profile(motifs: 'list[str]') -> 'list[dict[str, float]]':
     prof = []
     # iterate through each column
