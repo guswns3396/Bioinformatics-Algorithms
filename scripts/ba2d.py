@@ -39,20 +39,21 @@ def Profile(motifs: 'list[str]') -> 'list[dict[str, float]]':
     return prof
 
 
+# get probability of kmer
+def KmerP(kmer: str, prof: 'List[Dict[str, float]]'):
+    # get p for each ind
+    probs = [prof[i][kmer[i]] for i in range(len(kmer))]
+    # get prob
+    prob = 1
+    for p in probs:
+        prob *= p
+    return prob
+
+
 # redefine ProfileMostProbableKmer to use list instead of set
 # in order to preserve order & match expected answer
 def ProfileMostProbableKmer(txt: str, k: int,
                                 prof: 'List[Dict[str, float]]') -> str:
-
-    # get probability of kmer
-    def KmerP(kmer: str, prof: 'List[Dict[str, float]]'):
-        # get p for each ind
-        probs = [prof[i][kmer[i]] for i in range(len(kmer))]
-        # get prob
-        prob = 1
-        for p in probs:
-            prob *= p
-        return prob
 
     # get max p iterating through kmers
     p_max = 0
